@@ -48,6 +48,8 @@ deal = input("lmk when you want to start the game...")
 if(deal == "start"):
     player = input("What's your name?")
     sizeOfHand = input("How many cards do you want?")
+    if(int(sizeOfHand) > 25):
+        sizeOfHand = input("Save some for the rest of us!")
     bicycle.newHand(int(sizeOfHand), player)
     bicycle.newHand(int(sizeOfHand), "computer")
     wantToFight = input("Are you ready to fight?")
