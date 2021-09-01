@@ -1,7 +1,4 @@
-from testing.modules.ninjapet.ninja import Ninja
-
-
-class Pet(Ninja):
+class Pet:
     def __init__(self, name, type, tricks):
         self.name = name
         self.type = type
