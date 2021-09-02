@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkers</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylish.css') }}">
+    <style>
+        .box {
+            background-color: {{color1}};
+            width: 50px;
+            height: 50px;
+        }
+        
+        .otherColor {
+            background-color: {{color2}};
+            width: 50px;
+            height: 50px;
+        }
+        
+        .rects {
+            width: {{sizew}}px;
+            height: {{sizeh}}px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
+        <h3>Checkers!</h3>
+        <div class="rects">
+            {% if(odd == True): %} {% for x in range(0, num*num1) %} {% if(x % 2 == 1) %} <div class="box"></div> {% else %} <div class="otherColor"></div> {% endif %} {% endfor %}
+            {% elif(num1 % 2 == 0 and num % 2 == 1) %} {% for x in range(0, num-1, 2) %} {% for x in range(0, num1, 2): %}
+            <div class="box"></div>
+            <div class="otherColor"></div>
+            {% endfor %} {% for x in range(0, num1, 2): %}
+            <div class="otherColor"></div>
+            <div class="box"></div>
+            {% endfor %} {% endfor %}
+            {% for x in range(0, num1, 2): %}
+            <div class="box"></div>
+            <div class="otherColor"></div>
+            {% endfor %}
+            {% else %}
+            {% for x in range(0, num, 2) %} {% for x in range(0, num1, 2): %}
+            <div class="box"></div>
+            <div class="otherColor"></div>
+            {% endfor %} {% for x in range(0, num1, 2): %}
+            <div class="otherColor"></div>
+            <div class="box"></div>
+            {% endfor %} {% endfor %} {% endif %}
+        </div>
+
 
     </div>
 </body>
+
 </html>

@@ -1,6 +1,24 @@
+/* body {
+    display: flex;
+    justify-content: center;
+} */
+
 .container {
-    background-color: red;
-    border:  5px solid black;
+    display: flex;
+    flex-flow: wrap column;
+    align-content: center;
+    text-align: center;
+}
+
+.rects {
+    background-color: green;
+    border: 5px solid black;
     width: 500px;
     height: 500px;
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.box {
+    margin: 0;
 }
