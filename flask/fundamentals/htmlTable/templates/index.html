@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Tables with flask</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <!-- the bonus was to use a framework so im just using bootstrap... hope thats what it meant -->
+    <div class="container-sm mt-4">
+        <h3>Welcome to tables</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students: %}
+                <tr>
+                    <th scope="row">{{ student['first_name'] }}</th>
+                    <th>{{ student['last_name'] }}</th>
+                    <th>{{ student['first_name'] }} {{ student['last_name'] }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
