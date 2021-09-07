@@ -13,15 +13,35 @@
         <h1 class="m-4">Welcome to the Great Number Game!!!</h1>
         <h3>I am thinking of a number between 1 and 100</h3>
         {% if(winOrLose == True): %}
-            <div class="container m-4" style="background-color: green;"><h1 class="text-center">{{text}}</h1></div>
+            <div class="container m-4" style="background-color: green;">
+                <h1 class="text-center">{{text}}</h1>
+                <form action="/submit" method="POST" onsubmit="submitThis(this)">
+                    <input type="text" id="user">
+                    <input type="submit" value="Submit" class="btn btn-secondary">
+                </form>
+                <a href="/reset"><button class="btn btn-secondary">Reset</button></a>
+            </div>
         {% elif(winOrLose == False): %}
-            <div class="container m-4" style="background-color: red;"><h1 class="text-center">{{text}}</h1></div>
+            <div class="container m-4" style="background-color: red;">
+                <h1 class="text-center">{{text}}</h1>
+                <a href="/reset"><button class="btn btn-secondary">Reset</button></a>
+            </div>
         {% endif %}
         <form method="POST" class="card card-body" action="/guess/" onsubmit="guess(this)">
             <label class="card-title">Take a guess!!!</label>
             <input type="text" class="card-body" id="number">
             <input type="submit" value="Guess" class="btn btn-primary mt-2">
         </form>
+        {% if session['scores'] is undefined %}
+        <div class="container d-flex">
+            {% for v in range(0, session['scores'].length) %}
+            <div class="col">
+                {{leaderboard[v]}}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
     </div>
 </body>
 <script src="../static/numbers.js"></script>
