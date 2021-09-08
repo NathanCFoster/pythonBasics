@@ -1,0 +1,12 @@
+INSERT INTO user (`id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`) 
+VALUES ('1', 'Nathan', 'Foster', 'nfoster', '2021-09-07', '2021-09-07 07:11:59');
+INSERT INTO user (`id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`) 
+VALUES ('2', 'John', 'Doe', 'jdoe', '2021-09-07', '2021-09-07 07:11:59');
+INSERT INTO user (`id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`) 
+VALUES ('3', 'jane', 'doe', 'janedoe', '2021-09-07', '2021-09-07 07:11:59');
+select * from user
+select email from user where email = "nfoster";
+select first_name from user where id = 3;
+UPDATE user SET last_name = 'pancakes' WHERE id = "3";
+delete user from user where user.id = "2";
+select * from user order by first_name desc;
