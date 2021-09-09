@@ -1,0 +1,32 @@
+select *
+from countries
+left join languages
+on countries.id = languages.country_id
+where languages.language = "slovene";
+select countries.name, count('cities') as num_of_cities
+from countries
+left join cities
+on countries.id = cities.country_id
+where countries.id = 8
+order by num_of_cities desc;
+select *
+from countries
+left join cities
+on countries.id = cities.country_id
+where countries.name = "mexico";
+select *
+from languages
+left join countries
+on languages.country_id = countries.id
+where languages.percentage > 89;
+select * from countries where countries.surface_area < 501 and countries.population > 100000;
+select * from countries where government_form = "Constitutional Monarchy" and capital > 200 and life_expectancy > 75;
+select countries.name, cities.name, cities.district, cities.population
+from countries 
+left join cities
+on countries.id = cities.country_id
+where countries.name = "Argentina" and cities.district = "Buenos Aires" and cities.population > 500000;
+select countries.region, count(countries.name) as num_of_countries 
+from countries 
+where countries.region = "Caribbean" 
+order by num_of_countries desc;
