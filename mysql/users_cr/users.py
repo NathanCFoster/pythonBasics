@@ -1,5 +1,4 @@
 from mysqlconnection import connectToMySQL
-import time
 
 class User:
     def __init__(self, data):
@@ -8,6 +7,7 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
     
     @classmethod
     def add_user(cls, data):
@@ -23,3 +23,22 @@ class User:
         for row in results:
             all_users.append(cls(row))
         return all_users
+    
+    @classmethod
+    def findUser(cls, id):
+        query = "SELECT * FROM users where id = %s;" %(id)
+        currentUser = connectToMySQL('users').query_db(query)
+        return currentUser
+
+    @classmethod
+    def updateUser(clas, id, data):
+        query = f"UPDATE users SET first_name = '{data['first_name']}', last_name = '{data['last_name']}', email = '{data['email']}' WHERE id = {id};"
+        updateProfile = connectToMySQL("users").query_db(query, data)
+        return updateProfile
+
+    @classmethod
+    def deleteUser(clas, id):
+        query = "DELETE FROM users WHERE id = %s;" %(id)
+        connectToMySQL("users").query_db(query)
+        return
+

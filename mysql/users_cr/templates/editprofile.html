@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="d-flex flex-row justify-content-center align-items-center m-5">
+        <h2 class="display-2 col text-align-center flex-grow-1">{{currentUser.first_name}}</h2>
+        <a href="/all_users" class="btn btn-primary">Home</a>
+    </div>
+    <form action="/update/{{currentUser.id}}" method="POST" class="form">
+        <div class="d-flex mt-2">
+            <label class="form-label">First Name: </label>
+            <input type="text" id="location" class="form-control" name="first_name" value="{{currentUser.first_name}}">
+        </div>
+        <div class="d-flex mt-2">
+            <label class="form-label">Last Name: </label>
+            <input type="text" id="location" class="form-control" name="last_name" value="{{currentUser.last_name}}">
+        </div>
+        <div class="d-flex mt-2">
+            <label class="form-label">Email: </label>
+            <input type="text" id="location" class="form-control" name="email" value="{{currentUser.email}}">
+        </div>
+        <input type="submit" value="Update" class="btn btn-primary">
+        <a href="/profile/{{currentUser.id}}" class="btn">Show Profile</a>
+    </form>
+</body>
+</html>

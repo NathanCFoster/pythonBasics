@@ -18,6 +18,7 @@
                     <th>Full name</th>
                     <th>Email</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
                     {% for user in all_users %}
@@ -26,6 +27,7 @@
                         <td>{{user.first_name}} {{user.last_name}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.created_at}}</td>
+                        <td><a href="/profile/{{user.id}}" class="m-1">Show</a><a href="/edit/{{user.id}}" class="m-1">Edit</a><a href="/delete/{{user.id}}" class="m-1">Delete</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

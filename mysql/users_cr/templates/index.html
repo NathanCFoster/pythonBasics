@@ -14,7 +14,7 @@
         <form action="/submit" method="POST" class="form">
             <div class="d-flex mt-2">
                 <label class="form-label">First Name: </label>
-                <input type="text" id="location" class="form-control" name="first_name">
+                <input type="text" id="location" class="form-control" name="first_name" required>
             </div>
             <div class="d-flex mt-2">
                 <label class="form-label">Last Name: </label>
@@ -22,9 +22,9 @@
             </div>
             <div class="d-flex mt-2">
                 <label class="form-label">Email: </label>
-                <input type="text" id="location" class="form-control" name="email">
+                <input type="email" id="location" class="form-control" name="email" required>
             </div>
-            <input type="submit" value="Add User">
+            <input type="submit" value="Add User" class="btn btn-primary m-2">
         </form>
         <a class="btn btn-secondary mt-3" href="/all_users">Show Users</a>
     </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    </head>
+</head>
+<body>
+    <div class="d-flex flex-row justify-content-center align-items-center m-5">
+        <h2 class="display-2 col text-align-center flex-grow-1">{{currentUser.first_name}}</h2>
+        <a href="/all_users" class="btn btn-primary">Home</a>
+    </div>
+    <div class="container">
+        <table class="table table-dark table-striped table-hover">
+            <tbody>
+                <tr>
+                    <td>Full name: {{currentUser.first_name}} {{currentUser.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Email: {{currentUser.email}}</td>
+                </tr>
+                <tr>
+                    <td>Created On: {{currentUser.created_at}}</td>
+                </tr>
+                <tr>
+                    <td>Last Update {{currentUser.updated_at}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="m-4">
+        <a href="/edit/{{currentUser.id}}" class="btn">Edit</a>
+        |
+        <a href="/delete/{{currentUser.id}}" class="btn">Delete</a>
+    </div>
+</body>
+</html>
