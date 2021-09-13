@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ninja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form action="/submitNinja" class="form" method="POST">
+            <h2 class="title display-2 text-center mb-3">New Ninja</h2>
+            <select class="form-select mb-3" name="dojo">
+                <option selected>Choose A dojo</option>
+                {% for dojo in dojos %}
+                <option value="{{dojo.id}}">{{dojo.name}}</option>
+                {% endfor %}
+            </select>
+            <div class="input-group mb-3">
+                <span class="input-group-text">First Name</span>
+                <input type="text" class="form-control" name="first_name">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Last Name</span>
+                <input type="text" class="form-control" name="last_name">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Age</span>
+                <input type="text" class="form-control" name="age">
+            </div>
+            <div class="d-grid gap-2">
+                <input type="submit" class="btn btn-outline-dark mt-3 col" value="Create Account!">
+            </div>
+            
+        </form>
+        <a href="/" class="btn btn-outline-dark m-5">Home</a>
+    </div>
+</body>
+</html>
