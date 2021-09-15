@@ -92,3 +92,16 @@ class recipe:
         """
         updatedRecipe = connectToMySQL("recipe_schema").query_db(query, data)
         return updatedRecipe
+
+    @classmethod
+    def searchRecipe(cls, search):
+        query = f"""
+        SELECT * FROM recipe
+        WHERE name LIKE '%{search}'
+        OR name like '{search}%'
+        OR name like '%{search}%';
+        """
+        searchRecipe = connectToMySQL("recipe_schema").query_db(query)
+        if not searchRecipe:
+            return False
+        return searchRecipe

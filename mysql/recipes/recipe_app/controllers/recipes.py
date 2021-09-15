@@ -1,6 +1,4 @@
-from os import truncate
 import re
-from threading import current_thread
 import bcrypt
 from flask import request, render_template, redirect, flash
 from flask import session
@@ -90,9 +88,10 @@ def allRecipes():
 def viewRecipe(id):
     favorited = False
     favs = favorites.findFavs(session['user_id'])
-    for fav in favs:
-        if fav['recipe_id'] == int(id):
-            favorited = True
+    if favs != False:
+        for fav in favs:
+            if fav['recipe_id'] == int(id):
+                favorited = True
     return render_template("showRecipe.html", recipe=recipe.findRecipe(id), user=User.currentUser(session['user_id']), time=recipe.findTime(id), favorited=favorited)
 
 @app.route('/edit/<id>')
@@ -128,6 +127,11 @@ def favorite(id):
     }
     favorites.addFavorite(data)
     return redirect(f"/view/{id}")
+
+@app.route('/search', methods=['post'])
+def search():
+    var = request.form['search']
+    return render_template("allrecipes.html", recipes=recipe.searchRecipe(var), user=User.currentUser(session['user_id']))
 
 @app.errorhandler(404)
 def pageNotFound(e):

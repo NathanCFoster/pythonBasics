@@ -12,7 +12,7 @@
     <div class="container">
         <ul class="nav align-items-center justify-content-around mb-3">
             <li class="nav-item">
-                <a href="/" class="text-decoration-none text-dark"><h2 class="display-3 mt-2">Whats good {{user.first_name}}</h2></a>
+                <a href="/" class="text-decoration-none text-dark"><h2 class="display-3 mt-2">What's good... {{user.first_name}}</h2></a>
             </li>
             <li class="nav-item">
                 <a href="/create_recipe" class="btn btn-outline-dark">Create a new Recipe</a>
@@ -24,6 +24,13 @@
                 <a href="/logout" class="btn btn-outline-dark">Logout</a>
             </li>
         </ul>
+        <form action="/search" class="form m-5" method="POST">
+            <div class="form-floating mb-3 text-black">
+                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+                <label for="search">Search</label>
+            </div>
+        </form>
+        {% if recipes is not false %}
         <table class="table table-dark table-striped table-hover">
             <thead>
                 <th>Name</th>
@@ -50,6 +57,9 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <p class="display-4">No results found...</p>
+        {% endif %}
     </div>
 </body>
 </html>
