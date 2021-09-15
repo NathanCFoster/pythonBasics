@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Recipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <ul class="nav align-items-center justify-content-around m-4">
+            <li class="nav-item">
+                <h3 class="display-3">Update Recipe</h3>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="btn btn-outline-dark">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="btn btn-outline-dark">Logout</a>
+            </li>
+        </ul>
+        {% with messages = get_flashed_messages(category_filter='newRecipe') %}
+        {% if messages %}
+        <div class="alert-danger alert">
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form action="/update_recipe/{{recipe.id}}" class="form" method="POST">
+            <div class="form-floating mb-3 text-black">
+                <input type="text" class="form-control" id="floatingInput" name="recipe_name" placeholder="recipe_name" value="{{recipe.name}}" required>
+                <label for="recipe_name">Name</label>
+            </div>
+            <div class="form-floating text-black">
+                <input type="text" class="form-control" id="floatingInput" name="description" placeholder="description" value="{{recipe.description}}" required>
+                <label for="description">Description</label>
+            </div>
+            <p class="mb-3 ms-2">Can't be over 255 chars</p>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Leave a comment here" id="instructions" name="instructions"
+                    style="height: 150px" required>{{recipe.instructions}}</textarea>
+                <label for="instructions">Instructions</label>
+            </div>
+            {% macro sentence_case(text) %}
+                {{ text[0]|upper}}{{text[1:] }}
+            {% endmacro %}
+            {% if recipe.under_30_mins == "Yes" %}
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="under_30_mins" value="Yes" id="yes" checked required>
+                <label for="yes" class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check form-check-inline mb-3">
+                <input type="radio" class="form-check-input" name="under_30_mins" value="No" id="no" required>
+                <label for="no" class="form-check-label">No</label>
+            </div>
+            {% else %}
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="under_30_mins" value="Yes" id="yes" required>
+                <label for="yes" class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check form-check-inline mb-3">
+                <input type="radio" class="form-check-input" name="under_30_mins" value="No" id="no" checked required>
+                <label for="no" class="form-check-label">No</label>
+            </div>
+            {% endif %}
+            <div class="d-grid gap-2">
+                <input type="submit" class="btn btn-secondary text-white mb-3" value="Update">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
